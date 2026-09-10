@@ -1,0 +1,19 @@
+.doc-item {
+  display: grid;
+  gap: 6px;
+  padding: 16px 18px;
+  border-radius: 16px;
+  background: rgba(33, 76, 154, 0.04);
+  border: 1px solid rgba(33, 76, 154, 0.08);
+  margin-bottom: 18px;
+}
+
+.template-grid {
+  margin-top: 12px;
+}
+
+.template-card {
+  min-height: 230px;
+  display: flex;
+  flex-direction: column;
+}

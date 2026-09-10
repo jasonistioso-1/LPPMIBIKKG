@@ -1,0 +1,423 @@
+/* =========================
+   HERO
+========================= */
+.dosen-hero {
+  padding-top: 62px;
+}
+
+.dosen-hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 28px;
+  align-items: center;
+}
+
+.dosen-hero-panel {
+  min-height: 100%;
+}
+
+/* =========================
+   PROFIL PROGRAM SERTIFIKAT
+========================= */
+.program-profile-card {
+  overflow: hidden;
+  padding: 0;
+  border-radius: 32px;
+  background: #ffffff;
+  border: 1px solid rgba(33, 76, 154, 0.1);
+  box-shadow:
+    0 24px 56px rgba(27, 50, 98, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.program-certificate-wrap {
+  position: relative;
+  width: 100%;
+  min-height: 360px;
+  padding: 18px;
+  border-radius: 32px;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(159, 184, 232, 0.18), transparent 30%),
+    linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+}
+
+.program-certificate-img {
+  width: 100%;
+  height: 100%;
+  min-height: 330px;
+  max-height: 430px;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  border-radius: 24px;
+  background: #ffffff;
+  box-shadow: 0 18px 38px rgba(15, 23, 42, 0.12);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.program-profile-card:hover .program-certificate-img {
+  transform: scale(1.018);
+  box-shadow: 0 24px 48px rgba(15, 23, 42, 0.16);
+}
+
+/* =========================
+   SECTION HEAD
+========================= */
+.section-head-center {
+  text-align: center;
+  justify-items: center;
+  margin-bottom: 28px;
+}
+
+.section-head-center > div {
+  width: 100%;
+}
+
+.section-head-center .section-tag {
+  margin-inline: auto;
+}
+
+/* =========================
+   DOSEN GRID
+========================= */
+.dosen-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.dosen-card {
+  padding: 34px 28px;
+  border-radius: 32px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(33, 76, 154, 0.06);
+  box-shadow: 
+    0 10px 30px rgba(27, 50, 98, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dosen-card:hover {
+  transform: translateY(-6px);
+  background: #ffffff;
+  border-color: rgba(33, 76, 154, 0.18);
+  box-shadow: 
+    0 24px 64px rgba(27, 50, 98, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.dosen-badge {
+  display: inline-flex;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(33, 76, 154, 0.06);
+  color: var(--primary);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  border: 1px solid rgba(33, 76, 154, 0.05);
+}
+
+/* =========================
+   FOTO DOSEN
+========================= */
+.dosen-photo-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 22px;
+}
+
+.dosen-rotator {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 3px solid #ffffff;
+  outline: 1.5px solid rgba(33, 76, 154, 0.12);
+  box-shadow: 0 12px 28px rgba(27, 50, 98, 0.1);
+  background: linear-gradient(180deg, #ffffff 0%, #f5f9ff 100%);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dosen-card:hover .dosen-rotator {
+  outline-color: var(--primary);
+  outline-width: 2.5px;
+  transform: scale(1.05);
+  box-shadow: 0 16px 36px rgba(33, 76, 154, 0.2);
+}
+
+.dosen-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  background: linear-gradient(180deg, #ffffff 0%, #f7faff 100%);
+  opacity: 0;
+  transform: scale(1.05);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dosen-photo.is-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.dosen-rotator::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 42%;
+  background: linear-gradient(180deg, rgba(255,255,255,0), rgba(15,23,42,0.04));
+  pointer-events: none;
+}
+
+.dosen-gs-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--primary);
+  background: rgba(33, 76, 154, 0.05);
+  border: 1px solid rgba(33, 76, 154, 0.1);
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dosen-gs-link:hover {
+  background: var(--primary);
+  color: #ffffff !important;
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(33, 76, 154, 0.16);
+}
+
+.dosen-gs-link i {
+  font-size: 0.95rem;
+}
+
+.dosen-avatar-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #e6efff 0%, #c3d9ff 100%);
+  color: var(--primary);
+  font-size: 2.2rem;
+  font-weight: 800;
+  text-shadow: 0 2px 4px rgba(33, 76, 154, 0.15);
+  border-radius: 50%;
+}
+
+.dosen-card h3 {
+  margin: 0 0 8px;
+  font-size: 1.14rem;
+  line-height: 1.38;
+  transition: opacity 0.45s ease, transform 0.45s ease, color 0.25s ease;
+}
+
+.dosen-card:hover h3 {
+  color: var(--primary);
+}
+
+.dosen-role {
+  color: var(--primary) !important;
+  font-weight: 700;
+  margin: 0 0 10px;
+  line-height: 1.6;
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.dosen-meta {
+  margin: 0;
+  line-height: 1.75;
+  color: var(--muted, #5b6472);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.text-swapping h3,
+.text-swapping .dosen-role,
+.text-swapping .dosen-meta {
+  opacity: 0.3;
+  transform: translateY(4px);
+}
+
+.text-restored h3,
+.text-restored .dosen-role,
+.text-restored .dosen-meta {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 1080px) {
+  .dosen-hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dosen-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+  }
+
+  .program-certificate-wrap {
+    min-height: 320px;
+  }
+
+  .program-certificate-img {
+    min-height: 290px;
+    max-height: 380px;
+  }
+}
+
+@media (max-width: 760px) {
+  .dosen-hero-grid,
+  .dosen-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dosen-card {
+    padding: 24px;
+  }
+
+  .dosen-rotator {
+    width: 140px;
+    height: 140px;
+  }
+
+  .program-certificate-wrap {
+    padding: 12px;
+    min-height: 250px;
+    border-radius: 24px;
+  }
+
+  .program-certificate-img {
+    min-height: 230px;
+    max-height: 300px;
+    border-radius: 18px;
+  }
+  
+  .dosen-search-wrap {
+    margin-bottom: 28px;
+    padding: 0 16px;
+  }
+}
+
+/* =========================
+   SEARCH BAR STYLES
+   ========================= */
+.dosen-search-wrap {
+  max-width: 680px;
+  margin: 0 auto 46px;
+}
+
+.dosen-search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid rgba(33, 76, 154, 0.12);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(27, 50, 98, 0.05);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 4px 6px;
+}
+
+.dosen-search-box:focus-within {
+  border-color: var(--primary);
+  box-shadow: 
+    0 14px 34px rgba(33, 76, 154, 0.12),
+    0 0 0 5px rgba(33, 76, 154, 0.08);
+  transform: translateY(-1px);
+}
+
+.dosen-search-box .search-icon {
+  position: absolute;
+  left: 20px;
+  color: var(--primary);
+  font-size: 1.15rem;
+  pointer-events: none;
+}
+
+.dosen-search-box input {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  padding: 14px 14px 14px 52px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text);
+  outline: none;
+}
+
+.dosen-search-box input::placeholder {
+  color: #94a3b8;
+  font-weight: 400;
+}
+
+#dosenSearchClear {
+  background: rgba(33, 76, 154, 0.06);
+  border: 0;
+  color: var(--primary);
+  font-size: 1.35rem;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: all 0.2s ease;
+}
+
+#dosenSearchClear:hover {
+  background: var(--primary);
+  color: #ffffff;
+  transform: scale(1.08);
+}
+
+.dosen-search-results-info {
+  margin-top: 14px;
+  text-align: center;
+  font-size: 0.92rem;
+  color: var(--primary);
+  font-weight: 600;
+  animation: fadeIn 0.3s ease;
+}
+
+/* =========================
+   SINGLE PHOTO HOVER STYLE
+   ========================= */
+.is-single-photo .dosen-photo {
+  opacity: 1 !important;
+  transform: scale(1);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dosen-card:hover .is-single-photo .dosen-photo {
+  transform: scale(1.06);
+}
+
+.dosen-meta i {
+  color: var(--primary);
+  margin-right: 6px;
+  font-size: 0.9rem;
+}

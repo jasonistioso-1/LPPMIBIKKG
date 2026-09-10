@@ -1,0 +1,9 @@
+.info-grid {
+  margin-top: 28px;
+}
+
+.info-card {
+  min-height: 230px;
+  display: flex;
+  flex-direction: column;
+}

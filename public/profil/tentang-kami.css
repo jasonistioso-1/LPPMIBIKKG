@@ -1,0 +1,542 @@
+/* ==========================================================================
+   TENTANG KAMI - PREMIUM STYLESHEET
+   ========================================================================== */
+
+/* 1. Hero Section Layout & Refinements */
+.tentang-hero {
+  padding-top: 50px;
+  position: relative;
+}
+
+.hero-title-row {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Glassmorphism Panel on Hero Visual */
+.summary-panel {
+  padding: 34px;
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-radius: 34px;
+  box-shadow: 
+    0 24px 64px rgba(27, 50, 98, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.summary-panel:hover {
+  transform: translateY(-4px);
+  box-shadow: 
+    0 32px 80px rgba(27, 50, 98, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.summary-header {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 1.5px dashed rgba(33, 76, 154, 0.15);
+}
+
+.summary-icon-box {
+  width: 58px;
+  height: 58px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-2));
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.45rem;
+  box-shadow: 0 10px 24px rgba(33, 76, 154, 0.25);
+  animation: floatIcon 3.5s ease-in-out infinite alternate;
+}
+
+.summary-titles h3 {
+  margin: 0 0 4px;
+  font-size: 1.28rem;
+  font-weight: 800;
+  color: #16233b;
+}
+
+.summary-titles p {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+/* Glass Stat Cards Grid */
+.summary-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.glass-stat-card {
+  padding: 22px 18px;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 22px;
+  text-align: center;
+  box-shadow: 
+    0 8px 24px rgba(15, 23, 42, 0.03),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-stat-card:hover {
+  background: #ffffff;
+  border-color: rgba(33, 76, 154, 0.2);
+  transform: scale(1.038);
+  box-shadow: 
+    0 16px 36px rgba(33, 76, 154, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.stat-icon {
+  font-size: 1.35rem;
+  color: var(--primary-2);
+  margin-bottom: 8px;
+  transition: transform 0.3s ease;
+}
+
+.glass-stat-card:hover .stat-icon {
+  transform: translateY(-2px);
+}
+
+.stat-number {
+  font-size: 1.88rem;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  margin-bottom: 4px;
+}
+
+.stat-label {
+  font-size: 0.82rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+/* 2. Card Header Component */
+.card-icon-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.card-icon-header h3 {
+  margin: 0;
+  font-size: 1.34rem;
+  font-weight: 800;
+  color: #16233b;
+  letter-spacing: -0.03em;
+}
+
+.icon-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: rgba(33, 76, 154, 0.08);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  border: 1px solid rgba(33, 76, 154, 0.05);
+  transition: all 0.3s ease;
+}
+
+.card:hover .icon-circle {
+  background: var(--primary);
+  color: #ffffff;
+  transform: rotate(6deg) scale(1.05);
+}
+
+/* 3. Glowing Card & Custom Pillars */
+.card-glow-accent {
+  position: relative;
+  overflow: hidden;
+  border-left: 5px solid var(--primary) !important;
+}
+
+.card-glow-accent::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 180px;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(33, 76, 154, 0.03), transparent);
+  pointer-events: none;
+}
+
+.card-body-text p {
+  font-size: 1.02rem;
+  line-height: 1.82;
+  margin-bottom: 16px;
+}
+
+.card-body-text p:last-child {
+  margin-bottom: 0;
+}
+
+/* Premium Lists */
+.card-premium-list {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-blue {
+  border-left: 5px solid var(--primary) !important;
+}
+
+.card-gold {
+  border-left: 5px solid #d4a017 !important;
+}
+
+.card-gold .icon-circle {
+  color: #b58307;
+  background: rgba(181, 131, 7, 0.08);
+}
+
+.card-gold:hover .icon-circle {
+  background: #b58307;
+  color: #ffffff;
+}
+
+.premium-check-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 16px;
+}
+
+.premium-check-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  font-size: 0.98rem;
+  line-height: 1.62;
+}
+
+.check-icon {
+  color: var(--primary);
+  font-size: 1.15rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+  transition: transform 0.3s ease;
+}
+
+.card-gold .check-icon {
+  color: #b58307;
+}
+
+.premium-check-list li:hover .check-icon {
+  transform: scale(1.22);
+}
+
+.list-text {
+  color: var(--text);
+  font-weight: 500;
+}
+
+/* 4. Ruang Lingkup Layanan (3 Pillars Grid) */
+.card-pillars {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  padding: 0 !important;
+}
+
+.pillar-cards-grid {
+  gap: 28px;
+  margin-top: 10px;
+}
+
+.pillar-card {
+  padding: 34px 28px;
+  background: var(--surface);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+
+.pillar-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--primary-2));
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.pillar-card:hover {
+  transform: translateY(-6px);
+  background: #ffffff;
+  border-color: rgba(33, 76, 154, 0.16);
+  box-shadow: 0 28px 72px rgba(27, 50, 98, 0.16);
+}
+
+.pillar-card:hover::before {
+  opacity: 1;
+}
+
+.pillar-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.pillar-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: rgba(33, 76, 154, 0.08);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  transition: all 0.3s ease;
+}
+
+.pillar-card:hover .pillar-icon {
+  background: var(--primary);
+  color: #ffffff;
+  transform: scale(1.08) rotate(4deg);
+}
+
+.pillar-header h4 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #16233b;
+  letter-spacing: -0.02em;
+}
+
+.pillar-card p {
+  margin: 0 0 24px;
+  font-size: 0.95rem;
+  line-height: 1.76;
+  color: var(--muted);
+  flex-grow: 1;
+}
+
+.pillar-footer {
+  margin-top: auto;
+  border-top: 1px solid rgba(33, 76, 154, 0.06);
+  padding-top: 18px;
+}
+
+.pillar-link {
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: gap 0.25s ease;
+}
+
+.pillar-link i {
+  transition: transform 0.25s ease;
+}
+
+.pillar-card:hover .pillar-link {
+  color: var(--primary-2);
+}
+
+.pillar-card:hover .pillar-link i {
+  transform: translateX(4px);
+}
+
+/* 5. Core Values Grid Style */
+.card-values {
+  padding: 42px 34px;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 10px;
+}
+
+.value-item {
+  text-align: center;
+  padding: 24px 18px;
+  background: rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(33, 76, 154, 0.05);
+  border-radius: 24px;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.value-item:hover {
+  background: #ffffff;
+  transform: translateY(-4px);
+  border-color: rgba(33, 76, 154, 0.14);
+  box-shadow: 0 16px 36px rgba(27, 50, 98, 0.08);
+}
+
+.value-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: rgba(33, 76, 154, 0.06);
+  color: var(--primary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  margin-bottom: 16px;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.value-item:hover .value-icon {
+  background: var(--primary);
+  color: #ffffff;
+  transform: scale(1.1) translateY(-2px);
+  box-shadow: 0 8px 18px rgba(33, 76, 154, 0.16);
+}
+
+.value-item h5 {
+  margin: 0 0 8px;
+  font-size: 1.05rem;
+  font-weight: 750;
+  color: #16233b;
+}
+
+.value-item p {
+  margin: 0;
+  font-size: 0.86rem;
+  line-height: 1.68;
+  color: var(--muted);
+}
+
+/* 6. Commitment Block Redesign */
+.card-commitment {
+  padding: 48px 42px;
+  background: 
+    radial-gradient(circle at 10% 20%, rgba(159, 184, 232, 0.22), transparent 32%),
+    radial-gradient(circle at 90% 80%, rgba(33, 76, 154, 0.08), transparent 30%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 251, 255, 0.95) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 24px 56px rgba(27, 50, 98, 0.08);
+}
+
+.commitment-content {
+  max-width: 860px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.commitment-badge {
+  display: inline-flex;
+  padding: 8px 16px;
+  background: rgba(33, 76, 154, 0.08);
+  color: var(--primary);
+  font-size: 0.8rem;
+  font-weight: 700;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 18px;
+}
+
+.card-commitment h3 {
+  margin: 0 0 18px;
+  font-size: 1.76rem;
+  font-weight: 800;
+  line-height: 1.25;
+  color: #16233b;
+  letter-spacing: -0.03em;
+}
+
+.card-commitment p {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.88;
+  color: var(--muted);
+}
+
+/* Animations */
+@keyframes floatIcon {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-6px) rotate(3deg);
+  }
+}
+
+/* 7. Responsive Breakpoints */
+@media (max-width: 1200px) {
+  .values-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 1080px) {
+  .pillar-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .pillar-card:last-child {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 760px) {
+  .summary-panel {
+    padding: 24px;
+    margin-top: 10px;
+  }
+
+  .pillar-cards-grid,
+  .values-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .pillar-card:last-child {
+    grid-column: span 1;
+  }
+
+  .card-commitment {
+    padding: 34px 24px;
+  }
+
+  .card-commitment h3 {
+    font-size: 1.45rem;
+  }
+
+  .card-commitment p {
+    font-size: 0.95rem;
+  }
+
+  .card-values {
+    padding: 34px 22px;
+  }
+}

@@ -1,0 +1,19 @@
+.info-grid {
+  margin-top: 28px;
+}
+
+.info-card {
+  min-height: 230px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.info-card h3 {
+  margin: 0 0 18px;
+  font-size: 1rem;
+}
+
+.info-card p {
+  margin: 0;
+}
