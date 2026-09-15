@@ -1,40 +1,55 @@
 @extends('layouts.app')
-@section('title', 'Jurnal | LPPM IBI KKG')
-@push('styles')
-<link rel="stylesheet" href="{{ asset('publikasi/jurnal.css') }}" />
+@section('title', 'Jurnal Publikasi | LPPM IBI KKG')
+
+@push('meta')
+<meta name="description" content="Direktori Jurnal Publikasi Ilmiah LPPM Institut Bisnis dan Informatika Kwik Kian Gie (IBI KKG). Terindeks SINTA, Google Scholar, GARUDA, Crossref, dan Index Copernicus." />
+<meta name="keywords" content="Jurnal IBI KKG, Jurnal Akuntansi, Jurnal Manajemen, Jurnal Komunikasi Bisnis, Jurnal Abdimas, SINTA IBI KKG" />
+<meta property="og:title" content="Jurnal Publikasi | LPPM IBI KKG" />
+<meta property="og:description" content="Akses direktori jurnal ilmiah resmi terakreditasi LPPM Institut Bisnis dan Informatika Kwik Kian Gie." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="{{ request()->url() }}" />
 @endpush
+
+@push('styles')
+<link rel="stylesheet" href="{{ asset('publikasi/jurnal.css') }}?v={{ file_exists(public_path('publikasi/jurnal.css')) ? filemtime(public_path('publikasi/jurnal.css')) : time() }}" />
+@endpush
+
 @section('content')
 <div class="bg-glow glow-1"></div>
   <div class="bg-glow glow-2"></div>
 
-  
-
   <main>
     <section class="hero section jurnal-hero">
-      <div class="container jurnal-hero-grid">
-        <div class="hero-copy">
-          <span class="badge" data-lppm-cms="publikasi.hero.badge">{{ \App\Models\PageContent::getValue('publikasi.hero.badge', 'Publikasi · Jurnal') }}</span>
-
-          <div class="hero-title-row">
+      <div class="container">
+        <div class="jurnal-hero-top">
+          <div class="hero-copy">
+            <span class="badge" data-lppm-cms="publikasi.hero.badge">{{ \App\Models\PageContent::getValue('publikasi.hero.badge', 'Publikasi · Jurnal') }}</span>
             <h1 data-lppm-cms="publikasi.hero.title">{{ \App\Models\PageContent::getValue('publikasi.hero.title', 'Jurnal Publikasi') }}</h1>
+            <p data-lppm-cms="publikasi.hero.desc">{{ \App\Models\PageContent::getValue('publikasi.hero.desc', 'Direktori jurnal ilmiah resmi terakreditasi yang dikelola oleh LPPM IBI Kwik Kian Gie.') }}</p>
             
-            <div style="position: relative;">
-              <!-- Tombol Edit WA Khusus Admin (Akan muncul otomatis saat mode editor aktif via CSS) -->
-              <div class="wa-admin-controls">
-                <span data-lppm-cms="jurnal.wa.number" class="lppm-wa-admin-btn" title="Edit Nomor WhatsApp"><i class="fa-solid fa-phone"></i> Edit No WA</span>
-                <span data-lppm-cms="jurnal.wa.message" class="lppm-wa-admin-btn" title="Edit Pesan WhatsApp"><i class="fa-solid fa-message"></i> Edit Pesan</span>
-              </div>
+            <div class="hero-actions">
+              <a href="#daftar-jurnal" class="btn btn-primary" data-lppm-cms="publikasi.hero.btn1">{{ \App\Models\PageContent::getValue('publikasi.hero.btn1', 'Daftar Jurnal') }}</a>
+              <a href="{{ route('home') }}" class="btn btn-outline" data-lppm-cms="publikasi.hero.btn2">{{ \App\Models\PageContent::getValue('publikasi.hero.btn2', 'Kembali ke Beranda') }}</a>
+            </div>
+          </div>
 
-              @php
-                  $wa_num = preg_replace('/[^0-9]/', '', \App\Models\PageContent::getValue('jurnal.wa.number', '6281234567890'));
-                  if (substr($wa_num, 0, 1) === '0') {
-                      $wa_num = '62' . substr($wa_num, 1);
-                  }
-              @endphp
-              <a href="https://wa.me/{{ $wa_num }}?text={{ urlencode(\App\Models\PageContent::getValue('jurnal.wa.message', 'Halo LPPM, saya ingin bertanya seputar Jurnal Publikasi.')) }}" 
-                 class="wa-inline-card" target="_blank" rel="noopener noreferrer">
+          <div class="hero-wa-wrapper" style="position: relative;">
+            <!-- Tombol Edit WA Khusus Admin -->
+            <div class="wa-admin-controls">
+              <span data-lppm-cms="jurnal.wa.number" class="lppm-wa-admin-btn" title="Edit Nomor WhatsApp"><i class="fa-solid fa-phone"></i> Edit No WA</span>
+              <span data-lppm-cms="jurnal.wa.message" class="lppm-wa-admin-btn" title="Edit Pesan WhatsApp"><i class="fa-solid fa-message"></i> Edit Pesan</span>
+            </div>
+
+            @php
+                $wa_num = preg_replace('/[^0-9]/', '', \App\Models\PageContent::getValue('jurnal.wa.number', '6281234567890'));
+                if (substr($wa_num, 0, 1) === '0') {
+                    $wa_num = '62' . substr($wa_num, 1);
+                }
+            @endphp
+            <a href="https://wa.me/{{ $wa_num }}?text={{ urlencode(\App\Models\PageContent::getValue('jurnal.wa.message', 'Halo LPPM, saya ingin bertanya seputar Jurnal Publikasi.')) }}" 
+               class="wa-inline-card" target="_blank" rel="noopener noreferrer">
               <div class="wa-inline-icon">
-                <svg viewBox="0 0 24 24" width="24" height="24">
+                <svg viewBox="0 0 24 24" width="28" height="28">
                   <path fill="#25D366" d="M12.031 0C5.385 0 0 5.385 0 12.031c0 2.115.545 4.184 1.584 6.002L.062 24l6.104-1.602c1.761.95 3.754 1.452 5.865 1.452 6.646 0 12.031-5.385 12.031-12.031S18.677 0 12.031 0z" />
                   <path fill="#FFFFFF" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347" />
                 </svg>
@@ -44,41 +59,26 @@
                 <span class="wa-inline-desc" data-lppm-cms="jurnal.wa.desc">{{ \App\Models\PageContent::getValue('jurnal.wa.desc', 'Klik di sini untuk terhubung dengan admin via WhatsApp') }}</span>
               </div>
             </a>
-            </div>
-
-            <div class="index-marquee hero-marquee" aria-label="Index jurnal publikasi">
-              <div class="index-marquee-track">
-                <div class="index-marquee-item">
-                  <img src="{{ asset('assets/images/index/sinta.png') }}" alt="SINTA" />
-                </div>
-
-                <div class="index-marquee-item">
-                  <img src="{{ asset('assets/images/index/google-scholar.png') }}" alt="Google Scholar" />
-                </div>
-
-                <div class="index-marquee-item">
-                  <img src="{{ asset('assets/images/index/garuda.png') }}" alt="GARUDA" />
-                </div>
-
-                <div class="index-marquee-item">
-                  <img src="{{ asset('assets/images/index/crossreff.png') }}" alt="Crossref" />
-                </div>
-
-                <div class="index-marquee-item">
-                  <img src="{{ asset('assets/images/index/indexcopernicus.png') }}" alt="Index Copernicus" />
-                </div>
-
-                <div class="index-marquee-item">
-                  <img src="{{ asset('assets/images/index/dimensions.webp') }}" alt="Dimensions" />
-                </div>
-              </div>
-            </div>
           </div>
+        </div>
 
+        <!-- Marquee Indeksasi Jurnal (Clean Full-Width Container) -->
+        <div class="index-marquee hero-marquee" aria-label="Index jurnal publikasi">
+          <div class="index-marquee-track">
+            <div class="index-marquee-item"><img src="{{ asset('assets/images/index/sinta.png') }}" alt="SINTA" /></div>
+            <div class="index-marquee-item"><img src="{{ asset('assets/images/index/google-scholar.png') }}" alt="Google Scholar" /></div>
+            <div class="index-marquee-item"><img src="{{ asset('assets/images/index/garuda.png') }}" alt="GARUDA" /></div>
+            <div class="index-marquee-item"><img src="{{ asset('assets/images/index/crossreff.png') }}" alt="Crossref" /></div>
+            <div class="index-marquee-item"><img src="{{ asset('assets/images/index/indexcopernicus.png') }}" alt="Index Copernicus" /></div>
+            <div class="index-marquee-item"><img src="{{ asset('assets/images/index/dimensions.webp') }}" alt="Dimensions" /></div>
 
-          <div class="hero-actions">
-            <a href="#daftar-jurnal" class="btn btn-primary" data-lppm-cms="publikasi.hero.btn1">{{ \App\Models\PageContent::getValue('publikasi.hero.btn1', 'Daftar Jurnal') }}</a>
-            <a href="{{ route('home') }}" class="btn btn-outline" data-lppm-cms="publikasi.hero.btn2">{{ \App\Models\PageContent::getValue('publikasi.hero.btn2', 'Kembali ke Beranda') }}</a>
+            <!-- Duplicate for infinite seamless scroll -->
+            <div class="index-marquee-item"><img src="{{ asset('assets/images/index/sinta.png') }}" alt="SINTA" /></div>
+            <div class="index-marquee-item"><img src="{{ asset('assets/images/index/google-scholar.png') }}" alt="Google Scholar" /></div>
+            <div class="index-marquee-item"><img src="{{ asset('assets/images/index/garuda.png') }}" alt="GARUDA" /></div>
+            <div class="index-marquee-item"><img src="{{ asset('assets/images/index/crossreff.png') }}" alt="Crossref" /></div>
+            <div class="index-marquee-item"><img src="{{ asset('assets/images/index/indexcopernicus.png') }}" alt="Index Copernicus" /></div>
+            <div class="index-marquee-item"><img src="{{ asset('assets/images/index/dimensions.webp') }}" alt="Dimensions" /></div>
           </div>
         </div>
       </div>
@@ -89,7 +89,7 @@
         <div class="section-head section-head-center">
           <div>
             <span class="section-tag">Direktori Jurnal</span>
-            <h2>Daftar Jurnal</h2>
+            <h2>Daftar Jurnal Resmi LPPM</h2>
           </div>
         </div>
 

@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="referrer" content="no-referrer" />
   <title>@yield('title', 'LPPM IBI KKG')</title>
+  @stack('meta')
   <link rel="icon" type="image/png" href="{{ asset('assets/logo_ibinew_biru.png') }}" />
   <link rel="shortcut icon" type="image/png" href="{{ asset('assets/logo_ibinew_biru.png') }}" />
   <meta name="csrf-token" content="{{ csrf_token() }}">

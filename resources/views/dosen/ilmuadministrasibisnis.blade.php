@@ -7,16 +7,15 @@
 <div class="bg-glow glow-1"></div>
   <div class="bg-glow glow-2"></div>
   
-
   <main>
     <section class="hero section dosen-hero">
       <div class="container dosen-hero-grid">
         <div class="hero-copy">
           <span class="badge" data-lppm-cms="dosen.ilmuadministrasibisnis.hero.badge">
-            {{ \App\Models\PageContent::getValue('dosen.ilmuadministrasibisnis.hero.badge', 'Akademisi · Ilmu Administrasi Bisnis', 'text', 'dosen.ilmuadministrasibisnis', 'Badge: Ilmu Administrasi Bisnis') }}
+            {{ \App\Models\PageContent::getValue('dosen.ilmuadministrasibisnis.hero.badge', 'Akademisi · Administrasi Bisnis', 'text', 'dosen.ilmuadministrasibisnis', 'Badge: Administrasi Bisnis') }}
           </span>
           <h1 data-lppm-cms="dosen.ilmuadministrasibisnis.hero.title">
-            {{ \App\Models\PageContent::getValue('dosen.ilmuadministrasibisnis.hero.title', 'Ilmu Administrasi Bisnis', 'text', 'dosen.ilmuadministrasibisnis', 'Judul: Ilmu Administrasi Bisnis') }}
+            {{ \App\Models\PageContent::getValue('dosen.ilmuadministrasibisnis.hero.title', 'Ilmu Administrasi Bisnis', 'text', 'dosen.ilmuadministrasibisnis', 'Judul: Administrasi Bisnis') }}
           </h1>
 
           <div class="hero-actions">
@@ -33,8 +32,8 @@
           <div class="hero-panel dosen-hero-panel program-profile-card">
             <div class="program-certificate-wrap">
               <img
-                src="{{ asset(\App\Models\PageContent::getValue('dosen.ilmuadministrasibisnis.hero.image', 'assets/images/dosen/akre_adbis.jpg', 'image', 'dosen.ilmuadministrasibisnis', 'Gambar Hero')) }}"
-                alt="Sertifikat Profil Program Ilmu Administrasi Bisnis"
+                src="{{ asset(\App\Models\PageContent::getValue('dosen.ilmuadministrasibisnis.hero.image', 'assets/images/dosen/akre_abi.jpg', 'image', 'dosen.ilmuadministrasibisnis', 'Gambar Hero')) }}"
+                alt="Sertifikat Profil Program Administrasi Bisnis"
                 class="program-certificate-img"
                 data-lppm-cms="dosen.ilmuadministrasibisnis.hero.image"
               />
@@ -50,14 +49,10 @@
           <span class="section-tag">Daftar Akademisi</span>
         </div>
 
-        <div class="dosen-grid">
-        </div>
+        @include('dosen._dosen_list', ['prodiArray' => ['Administrasi Bisnis'], 'prodiName' => 'Ilmu Administrasi Bisnis'])
       </div>
     </section>
   </main>
 
-  
-  
-  <script src="{{ asset('dosen/dosen-data.js') }}"></script>
   <script src="{{ asset('dosen/dosen.js') }}"></script>
 @endsection

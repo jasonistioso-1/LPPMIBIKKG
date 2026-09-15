@@ -7,7 +7,6 @@
 <div class="bg-glow glow-1"></div>
   <div class="bg-glow glow-2"></div>
   
-
   <main>
     <section class="hero section dosen-hero">
       <div class="container dosen-hero-grid">
@@ -33,7 +32,7 @@
           <div class="hero-panel dosen-hero-panel program-profile-card">
             <div class="program-certificate-wrap">
               <img
-                src="{{ asset(\App\Models\PageContent::getValue('dosen.ilmukomunikasi.hero.image', 'assets/images/dosen/akre_ikom.jpg', 'image', 'dosen.ilmukomunikasi', 'Gambar Hero')) }}"
+                src="{{ asset(\App\Models\PageContent::getValue('dosen.ilmukomunikasi.hero.image', 'assets/images/dosen/akre_ilkom.jpg', 'image', 'dosen.ilmukomunikasi', 'Gambar Hero')) }}"
                 alt="Sertifikat Profil Program Ilmu Komunikasi"
                 class="program-certificate-img"
                 data-lppm-cms="dosen.ilmukomunikasi.hero.image"
@@ -50,14 +49,10 @@
           <span class="section-tag">Daftar Akademisi</span>
         </div>
 
-        <div class="dosen-grid">
-        </div>
+        @include('dosen._dosen_list', ['prodiArray' => ['Ilmu Komunikasi'], 'prodiName' => 'Ilmu Komunikasi'])
       </div>
     </section>
   </main>
 
-  
-  
-  <script src="{{ asset('dosen/dosen-data.js') }}"></script>
   <script src="{{ asset('dosen/dosen.js') }}"></script>
 @endsection

@@ -19,6 +19,9 @@
     const grid = document.querySelector(".dosen-grid");
     if (!grid || typeof DOSEN_DATA === "undefined") return;
 
+    // If server already pre-rendered cards for SEO, do not wipe them
+    if (grid.querySelectorAll(".dosen-card").length > 0) return;
+
     const path = window.location.pathname.toLowerCase();
     let activeProdis = [];
 
@@ -40,7 +43,7 @@
 
     grid.innerHTML = ""; // Clear static items
 
-    filteredDosen.forEach((d, idx) => {
+    filteredDosen.forEach((d) => {
       const card = document.createElement("article");
       card.className = "dosen-card card reveal";
 
@@ -50,7 +53,7 @@
       if (d.gsUser) {
         const photoUrl = `https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=${d.gsUser}`;
         photoHTML = `
-          <img class="dosen-photo is-active" src="${photoUrl}" alt="${d.nama}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+          <img class="dosen-photo is-active" src="${photoUrl}" alt="${d.nama}" onerror="this.style.display='none'; if(this.nextElementSibling) this.nextElementSibling.style.display='flex';" />
           <div class="dosen-avatar-placeholder" style="display:none;">${getInitials(d.nama)}</div>
         `;
       } else {
@@ -93,21 +96,23 @@
     const container = section.querySelector(".container");
     if (!container) return;
 
-    // Create search bar container
-    const searchWrap = document.createElement("div");
-    searchWrap.className = "dosen-search-wrap reveal";
-    searchWrap.innerHTML = `
-      <div class="dosen-search-box">
-        <i class="fa-solid fa-magnifying-glass search-icon"></i>
-        <input type="text" id="dosenSearchInput" placeholder="Cari akademisi berdasarkan nama atau bidang keahlian riset..." autocomplete="off" />
-        <button type="button" id="dosenSearchClear" style="display:none;" aria-label="Bersihkan pencarian">&times;</button>
-      </div>
-      <div class="dosen-search-results-info" id="dosenSearchResultsInfo" style="display:none;"></div>
-    `;
+    // Create search bar container if not present
+    if (!document.getElementById("dosenSearchInput")) {
+      const searchWrap = document.createElement("div");
+      searchWrap.className = "dosen-search-wrap reveal";
+      searchWrap.innerHTML = `
+        <div class="dosen-search-box">
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          <input type="text" id="dosenSearchInput" placeholder="Cari akademisi berdasarkan nama atau bidang keahlian riset..." autocomplete="off" />
+          <button type="button" id="dosenSearchClear" style="display:none;" aria-label="Bersihkan pencarian">&times;</button>
+        </div>
+        <div class="dosen-search-results-info" id="dosenSearchResultsInfo" style="display:none;"></div>
+      `;
 
-    const grid = container.querySelector(".dosen-grid");
-    if (grid) {
-      container.insertBefore(searchWrap, grid);
+      const grid = container.querySelector(".dosen-grid");
+      if (grid) {
+        container.insertBefore(searchWrap, grid);
+      }
     }
 
     const input = document.getElementById("dosenSearchInput");
@@ -121,26 +126,21 @@
       const cards = Array.from(document.querySelectorAll(".dosen-card"));
       let visibleCount = 0;
 
-      if (query) {
-        clearBtn.style.display = "block";
-      } else {
-        clearBtn.style.display = "none";
-      }
+      clearBtn.style.display = query ? "block" : "none";
 
       cards.forEach((card) => {
-        const name = card.querySelector("h3").textContent.toLowerCase();
-        const role = card.querySelector(".dosen-role").textContent.toLowerCase();
-        const meta = card.querySelector(".dosen-meta").textContent.toLowerCase();
+        const name = (card.querySelector("h3")?.textContent || "").toLowerCase();
+        const role = (card.querySelector(".dosen-role")?.textContent || "").toLowerCase();
+        const meta = (card.querySelector(".dosen-meta")?.textContent || "").toLowerCase();
 
         const matches = name.includes(query) || role.includes(query) || meta.includes(query);
-        card.style.display = matches ? "block" : "none";
+        card.style.display = matches ? "" : "none";
         
         if (matches) {
           visibleCount++;
-          // Ensure they are fully visible (handling scroll reveal library attributes if needed)
           card.classList.add("is-visible");
           card.style.opacity = "1";
-          card.style.transform = "translateY(0) scale(1)";
+          card.style.transform = "none";
         }
       });
 

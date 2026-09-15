@@ -7,7 +7,6 @@
 <div class="bg-glow glow-1"></div>
   <div class="bg-glow glow-2"></div>
   
-
   <main>
     <section class="hero section dosen-hero">
       <div class="container dosen-hero-grid">
@@ -50,14 +49,10 @@
           <span class="section-tag">Daftar Akademisi</span>
         </div>
 
-        <div class="dosen-grid">
-        </div>
+        @include('dosen._dosen_list', ['prodiArray' => ['Manajemen', 'Magister Manajemen'], 'prodiName' => 'Manajemen'])
       </div>
     </section>
   </main>
 
-  
-  
-  <script src="{{ asset('dosen/dosen-data.js') }}"></script>
   <script src="{{ asset('dosen/dosen.js') }}"></script>
 @endsection
