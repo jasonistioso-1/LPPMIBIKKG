@@ -338,9 +338,12 @@
 
           <div class="form-group">
             <label for="password">Kata Sandi</label>
-            <div class="input-wrapper">
-              <input type="password" id="password" name="password" class="form-control" required>
+            <div class="input-wrapper" style="position: relative;">
+              <input type="password" id="password" name="password" class="form-control" style="padding-right: 45px;" required>
               <i class="fa-solid fa-lock"></i>
+              <button type="button" id="togglePassword" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; color: #64748b; cursor: pointer; font-size: 16px; padding: 4px; z-index: 10;" title="Tampilkan/Sembunyikan Kata Sandi">
+                <i class="fa-solid fa-eye" id="togglePasswordIcon"></i>
+              </button>
             </div>
           </div>
 
@@ -367,6 +370,31 @@
     </div>
   </div>
 
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const toggleBtn = document.getElementById('togglePassword');
+      const passwordInput = document.getElementById('password');
+      const toggleIcon = document.getElementById('togglePasswordIcon');
+
+      if (toggleBtn && passwordInput && toggleIcon) {
+        toggleBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+          passwordInput.setAttribute('type', type);
+          
+          if (type === 'text') {
+            toggleIcon.classList.remove('fa-eye');
+            toggleIcon.classList.add('fa-eye-slash');
+            toggleBtn.style.color = '#0ea5e9';
+          } else {
+            toggleIcon.classList.remove('fa-eye-slash');
+            toggleIcon.classList.add('fa-eye');
+            toggleBtn.style.color = '#64748b';
+          }
+        });
+      }
+    });
+  </script>
 </body>
 
 </html>

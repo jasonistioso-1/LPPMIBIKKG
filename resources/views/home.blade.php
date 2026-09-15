@@ -414,7 +414,7 @@
                 class="news-feature-link"
                 @if(str_starts_with($url, 'http')) target="_blank" rel="noopener noreferrer" @endif>
                 <div class="news-feature-image video-thumb">
-                  <img src="{{ asset($image) }}" alt="{{ $title }}" data-lppm-cms="{{ $imageKey }}" />
+                  <img src="{{ (str_starts_with($image, 'http://') || str_starts_with($image, 'https://')) ? $image : asset($image) }}" alt="{{ $title }}" data-lppm-cms="{{ $imageKey }}" />
                   <div class="video-play-overlay"></div>
                 </div>
                 <div class="news-feature-body">
