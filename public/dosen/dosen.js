@@ -138,12 +138,14 @@
         const matches = !query || name.includes(query) || role.includes(query) || meta.includes(query) || dataName.includes(query) || dataKeahlian.includes(query);
         
         if (matches) {
+          card.classList.remove("is-hidden");
           card.style.removeProperty("display");
           visibleCount++;
           card.classList.add("is-visible");
           card.style.opacity = "1";
           card.style.transform = "none";
         } else {
+          card.classList.add("is-hidden");
           card.style.setProperty("display", "none", "important");
         }
       });

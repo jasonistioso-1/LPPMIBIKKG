@@ -101,6 +101,10 @@
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.dosen-card.is-hidden {
+  display: none !important;
+}
+
 .dosen-card:hover {
   transform: translateY(-6px);
   background: #ffffff;

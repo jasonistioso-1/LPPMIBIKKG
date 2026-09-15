@@ -2265,9 +2265,13 @@ main .container {
 .dosen-card {
   padding: 32px 24px !important;
   text-align: center !important;
-  display: flex !important;
+  display: flex;
   flex-direction: column !important;
   align-items: center !important;
+}
+
+.dosen-card.is-hidden {
+  display: none !important;
 }
 
 .dosen-avatar img,
