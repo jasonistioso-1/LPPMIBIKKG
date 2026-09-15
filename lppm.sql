@@ -1,30 +1,8 @@
 -- LPPM IBI KKG Database Dump
 SET FOREIGN_KEY_CHECKS=0;
 
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE `users` (
-  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `username` varchar(255) NOT NULL,
-  `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) NOT NULL,
-  `remember_token` varchar(100) DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `users_email_unique` (`email`),
-  UNIQUE KEY `users_username_unique` (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-INSERT INTO `users` (`id`, `username`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'admin', '$2y$12$PETSCtL0op7uzIZG.5cJS.Cy6arGqYHCw0RI2IPQz.EkaSlfRCvqi', NULL, '2026-09-15 06:46:56', '2026-09-15 06:46:56');
-
-DROP TABLE IF EXISTS `password_reset_tokens`;
-DROP TABLE IF EXISTS `sessions`;
-DROP TABLE IF EXISTS `job_batches`;
-DROP TABLE IF EXISTS `failed_jobs`;
 DROP TABLE IF EXISTS `page_contents`;
+
 CREATE TABLE `page_contents` (
   `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `page` varchar(255) NOT NULL DEFAULT 'general',
@@ -497,16 +475,40 @@ Dokumentasi kegiatan harus tersedia saat monitoring', 'textarea', '2026-09-15 06
 (437, 'dosen.manajemen', 'dosen.manajemen.dosen.18.url', 'Google Scholar ID (Opsional)', 'reM4N08AAAAJ', 'text', '2026-09-15 06:46:57', '2026-09-15 06:46:57'),
 (438, 'dosen.manajemen', 'dosen.manajemen.dosen.18.image', 'Foto Dosen', 'assets/images/pkm2024.jpeg', 'image', '2026-09-15 06:46:57', '2026-09-15 06:46:57');
 
+DROP TABLE IF EXISTS `users`;
+
+CREATE TABLE `users` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
+  `remember_token` varchar(100) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `users_email_unique` (`email`),
+  UNIQUE KEY `users_username_unique` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `users` (`id`, `username`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'admin', '$2y$12$PETSCtL0op7uzIZG.5cJS.Cy6arGqYHCw0RI2IPQz.EkaSlfRCvqi', NULL, '2026-09-15 06:46:56', '2026-09-15 06:46:56');
+
 DROP TABLE IF EXISTS `menus`;
+
 CREATE TABLE `menus` (
   `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) NOT NULL,
-  `url` varchar(255) NOT NULL,
   `parent_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `name` varchar(255) NOT NULL,
+  `route_name` varchar(255) DEFAULT NULL,
+  `url` varchar(255) DEFAULT NULL,
   `order` int(11) NOT NULL DEFAULT 0,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `menus_parent_id_foreign` (`parent_id`),
+  CONSTRAINT `menus_parent_id_foreign` FOREIGN KEY (`parent_id`) REFERENCES `menus` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `menus` (`id`, `parent_id`, `name`, `route_name`, `url`, `order`, `created_at`, `updated_at`) VALUES
