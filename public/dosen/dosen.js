@@ -132,15 +132,19 @@
         const name = (card.querySelector("h3")?.textContent || "").toLowerCase();
         const role = (card.querySelector(".dosen-role")?.textContent || "").toLowerCase();
         const meta = (card.querySelector(".dosen-meta")?.textContent || "").toLowerCase();
+        const dataName = (card.dataset.name || "").toLowerCase();
+        const dataKeahlian = (card.dataset.keahlian || "").toLowerCase();
 
-        const matches = name.includes(query) || role.includes(query) || meta.includes(query);
-        card.style.display = matches ? "" : "none";
+        const matches = !query || name.includes(query) || role.includes(query) || meta.includes(query) || dataName.includes(query) || dataKeahlian.includes(query);
         
         if (matches) {
+          card.style.removeProperty("display");
           visibleCount++;
           card.classList.add("is-visible");
           card.style.opacity = "1";
           card.style.transform = "none";
+        } else {
+          card.style.setProperty("display", "none", "important");
         }
       });
 

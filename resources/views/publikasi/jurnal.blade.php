@@ -25,7 +25,6 @@
           <div class="hero-copy">
             <span class="badge" data-lppm-cms="publikasi.hero.badge">{{ \App\Models\PageContent::getValue('publikasi.hero.badge', 'Publikasi · Jurnal') }}</span>
             <h1 data-lppm-cms="publikasi.hero.title">{{ \App\Models\PageContent::getValue('publikasi.hero.title', 'Jurnal Publikasi') }}</h1>
-            <p data-lppm-cms="publikasi.hero.desc">{{ \App\Models\PageContent::getValue('publikasi.hero.desc', 'Direktori jurnal ilmiah resmi terakreditasi yang dikelola oleh LPPM IBI Kwik Kian Gie.') }}</p>
             
             <div class="hero-actions">
               <a href="#daftar-jurnal" class="btn btn-primary" data-lppm-cms="publikasi.hero.btn1">{{ \App\Models\PageContent::getValue('publikasi.hero.btn1', 'Daftar Jurnal') }}</a>
