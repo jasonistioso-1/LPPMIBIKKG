@@ -864,6 +864,34 @@ class DatabaseSeeder extends Seeder
                 'value' => 'https://youtu.be/JeANHnOH6uA',
                 'type' => 'text',
             ],
+            [
+                'page' => 'home',
+                'key' => 'home.video.4.title',
+                'label' => 'Video 4: Judul',
+                'value' => 'Sosialisasi & Workshop Riset LPPM',
+                'type' => 'text',
+            ],
+            [
+                'page' => 'home',
+                'key' => 'home.video.4.desc',
+                'label' => 'Video 4: Deskripsi',
+                'value' => 'Kegiatan workshop, sosialisasi hibah, dan bimbingan teknis riset civitas akademika.',
+                'type' => 'textarea',
+            ],
+            [
+                'page' => 'home',
+                'key' => 'home.video.4.image',
+                'label' => 'Video 4: Thumbnail',
+                'value' => 'https://img.youtube.com/vi/Jlhzag8qnmA/hqdefault.jpg',
+                'type' => 'image',
+            ],
+            [
+                'page' => 'home',
+                'key' => 'home.video.4.url',
+                'label' => 'Video 4: URL/Link Video',
+                'value' => 'https://youtu.be/Jlhzag8qnmA',
+                'type' => 'text',
+            ],
         ];
 
         foreach ($elements as $el) {
