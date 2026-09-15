@@ -547,4 +547,34 @@ INSERT INTO `menus` (`id`, `parent_id`, `name`, `route_name`, `url`, `order`, `c
 (33, 31, 'Jam Layanan', 'kontak.jam-layanan', NULL, 2, '2026-09-15 06:47:12', '2026-09-15 06:47:12'),
 (34, 31, 'Lokasi', 'kontak.lokasi-kampus', NULL, 3, '2026-09-15 06:47:12', '2026-09-15 06:47:12');
 
+
+DROP TABLE IF EXISTS sessions;
+CREATE TABLE sessions (
+  id varchar(255) NOT NULL,
+  user_id bigint(20) UNSIGNED DEFAULT NULL,
+  ip_address varchar(45) DEFAULT NULL,
+  user_agent text DEFAULT NULL,
+  payload longtext NOT NULL,
+  last_activity int(11) NOT NULL,
+  PRIMARY KEY (id),
+  KEY sessions_user_id_index (user_id),
+  KEY sessions_last_activity_index (last_activity)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+DROP TABLE IF EXISTS cache;
+CREATE TABLE cache (
+  key varchar(255) NOT NULL,
+  alue mediumtext NOT NULL,
+  expiration int(11) NOT NULL,
+  PRIMARY KEY (key)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+DROP TABLE IF EXISTS cache_locks;
+CREATE TABLE cache_locks (
+  key varchar(255) NOT NULL,
+  owner varchar(255) NOT NULL,
+  expiration int(11) NOT NULL,
+  PRIMARY KEY (key)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 SET FOREIGN_KEY_CHECKS=1;
