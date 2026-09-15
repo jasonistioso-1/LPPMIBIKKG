@@ -8,19 +8,47 @@
       }));
   }
 
-  function getDosenInitials($name) {
-      $clean = preg_replace('/(Prof\.|Dr\.|Ir\.|Drs\.|Dra\.)/i', '', $name);
-      if (str_contains($clean, ',')) {
-          $clean = explode(',', $clean)[0];
+  if (!function_exists('getDosenInitials')) {
+      function getDosenInitials($name) {
+          $clean = preg_replace('/(Prof\.|Dr\.|Ir\.|Drs\.|Dra\.)/i', '', $name);
+          if (str_contains($clean, ',')) {
+              $clean = explode(',', $clean)[0];
+          }
+          $parts = array_values(array_filter(explode(' ', trim($clean))));
+          if (count($parts) >= 2) {
+              return strtoupper(substr($parts[0], 0, 1) . substr($parts[1], 0, 1));
+          } elseif (count($parts) === 1) {
+              return strtoupper(substr($parts[0], 0, 2));
+          }
+          return 'DS';
       }
-      $parts = array_values(array_filter(explode(' ', trim($clean))));
-      if (count($parts) >= 2) {
-          return strtoupper(substr($parts[0], 0, 1) . substr($parts[1], 0, 1));
-      } elseif (count($parts) === 1) {
-          return strtoupper(substr($parts[0], 0, 2));
-      }
-      return 'DS';
   }
+
+  $schemaItems = [];
+  foreach ($dosenList as $idx => $d) {
+      $schemaItems[] = [
+          '@type' => 'ListItem',
+          'position' => $idx + 1,
+          'item' => [
+              '@type' => 'Person',
+              'name' => $d['nama'] ?? '',
+              'jobTitle' => 'Dosen ' . ($d['prodi'] ?? ''),
+              'worksFor' => [
+                  '@type' => 'EducationalOrganization',
+                  'name' => 'Institut Bisnis dan Informatika Kwik Kian Gie'
+              ],
+              'knowsAbout' => $d['keahlian'] ?? '-'
+          ]
+      ];
+  }
+
+  $schemaData = [
+      '@context' => 'https://schema.org',
+      '@type' => 'ItemList',
+      'name' => 'Dosen dan Peneliti ' . $prodiName . ' LPPM IBI Kwik Kian Gie',
+      'description' => 'Daftar akademisi dan peneliti prodi ' . $prodiName . ' Institut Bisnis dan Informatika Kwik Kian Gie',
+      'itemListElement' => $schemaItems
+  ];
 @endphp
 
 @push('meta')
@@ -31,30 +59,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="{{ request()->url() }}" />
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  "name": "Dosen dan Peneliti {{ $prodiName }} LPPM IBI Kwik Kian Gie",
-  "description": "Daftar akademisi dan peneliti prodi {{ $prodiName }} Institut Bisnis dan Informatika Kwik Kian Gie",
-  "itemListElement": [
-    @foreach($dosenList as $idx => $d)
-    {
-      "@type": "ListItem",
-      "position": {{ $idx + 1 }},
-      "item": {
-        "@type": "Person",
-        "name": "{{ e($d['nama'] ?? '') }}",
-        "jobTitle": "Dosen {{ e($d['prodi'] ?? '') }}",
-        "worksFor": {
-          "@type": "EducationalOrganization",
-          "name": "Institut Bisnis dan Informatika Kwik Kian Gie"
-        },
-        "knowsAbout": "{{ e($d['keahlian'] ?? '-') }}"
-      }
-    }@if(!$loop->last),@endif
-    @endforeach
-  ]
-}
+{!! json_encode($schemaData, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}
 </script>
 @endpush
 
