@@ -151,7 +151,7 @@
                   data-lppm-cms="struktur.staff.tundo.photo1"
                 />
               </div>
-              <h3 data-lppm-cms="struktur.staff.tundo.name">{{ \App\Models\PageContent::getValue('struktur.staff.tundo.name', 'Ir. Tundo, S.Kom., M.Kom') }}</h3>
+              <h3 data-lppm-cms="struktur.staff.tundo.name">{{ \App\Models\PageContent::getValue('struktur.staff.tundo.name', 'Joko Susilo, S.Kom., M.M., M.Kom.') }}</h3>
               <p class="org-role" data-lppm-cms="struktur.staff.tundo.role">{{ \App\Models\PageContent::getValue('struktur.staff.tundo.role', 'Chief Editor Jurnal Informatika dan Bisnis') }}</p>
             </article>
 
