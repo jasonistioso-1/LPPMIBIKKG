@@ -22,6 +22,23 @@
 </head>
 
 <body data-root="">
+  {{-- Global Preloader Splash Screen --}}
+  <div id="sitePreloader" class="site-preloader" aria-hidden="true">
+    <div class="preloader-content">
+      <div class="preloader-logo-wrapper">
+        <div class="preloader-glow"></div>
+        <img src="{{ asset('assets/logo_ibinew_biru.png') }}" alt="Logo LPPM IBI KKG" class="preloader-logo" />
+      </div>
+      <div class="preloader-text">
+        <h2 class="preloader-title">LPPM IBI KWIK KIAN GIE</h2>
+        <p class="preloader-subtitle">Lembaga Penelitian dan Pengabdian kepada Masyarakat</p>
+      </div>
+      <div class="preloader-bar-wrap">
+        <div class="preloader-bar"></div>
+      </div>
+    </div>
+  </div>
+
   <div class="bg-glow glow-1 parallax-item"></div>
   <div class="bg-glow glow-2 parallax-item"></div>
 
@@ -63,6 +80,34 @@
       </div>
     </div>
   </div>
+  {{-- Preloader Dismissal Handler --}}
+  <script>
+    (function() {
+      var preloader = document.getElementById('sitePreloader');
+      if (!preloader) return;
+
+      var hidden = false;
+      function dismiss() {
+        if (hidden) return;
+        hidden = true;
+        preloader.classList.add('is-hidden');
+        setTimeout(function() {
+          preloader.style.display = 'none';
+        }, 550);
+      }
+
+      if (document.readyState === 'complete') {
+        setTimeout(dismiss, 600);
+      } else {
+        window.addEventListener('load', function() {
+          setTimeout(dismiss, 600);
+        });
+      }
+
+      // Maximum fallback safety timeout (2.5s)
+      setTimeout(dismiss, 2500);
+    })();
+  </script>
 </body>
 
 </html>
