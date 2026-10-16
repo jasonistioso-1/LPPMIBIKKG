@@ -38,6 +38,50 @@
       </div>
     </div>
   </div>
+  <script>
+    (function() {
+      try {
+        var preloader = document.getElementById('sitePreloader');
+        if (!preloader) return;
+
+        // Detect if current page load is a reload / refresh
+        var navEntries = (window.performance && performance.getEntriesByType) ? performance.getEntriesByType('navigation') : [];
+        var navType = navEntries.length > 0 ? navEntries[0].type : '';
+        var legacyReload = (window.performance && window.performance.navigation && window.performance.navigation.type === 1);
+        var isReload = (navType === 'reload' || legacyReload);
+        var hasSeen = sessionStorage.getItem('lppm_preloader_seen');
+
+        // Only show on first visit of the session OR on manual refresh (F5 / reload)
+        // If it's normal internal page navigation, hide immediately without flashing
+        if (hasSeen && !isReload) {
+          preloader.style.display = 'none';
+          return;
+        }
+
+        // Mark as seen for current browser session
+        sessionStorage.setItem('lppm_preloader_seen', '1');
+
+        var dismissed = false;
+        function dismissPreloader() {
+          if (dismissed) return;
+          dismissed = true;
+          preloader.classList.add('is-hidden');
+          setTimeout(function() {
+            preloader.style.display = 'none';
+          }, 700);
+        }
+
+        // Click anywhere on preloader to dismiss immediately if desired
+        preloader.addEventListener('click', dismissPreloader);
+
+        // Preloader duration: slightly longer (~1.8 seconds) as requested
+        setTimeout(dismissPreloader, 1800);
+      } catch (e) {
+        var el = document.getElementById('sitePreloader');
+        if (el) el.style.display = 'none';
+      }
+    })();
+  </script>
 
   <div class="bg-glow glow-1 parallax-item"></div>
   <div class="bg-glow glow-2 parallax-item"></div>
@@ -80,34 +124,6 @@
       </div>
     </div>
   </div>
-  {{-- Preloader Dismissal Handler --}}
-  <script>
-    (function() {
-      var preloader = document.getElementById('sitePreloader');
-      if (!preloader) return;
-
-      var hidden = false;
-      function dismiss() {
-        if (hidden) return;
-        hidden = true;
-        preloader.classList.add('is-hidden');
-        setTimeout(function() {
-          preloader.style.display = 'none';
-        }, 550);
-      }
-
-      if (document.readyState === 'complete') {
-        setTimeout(dismiss, 1400);
-      } else {
-        window.addEventListener('load', function() {
-          setTimeout(dismiss, 1400);
-        });
-      }
-
-      // Maximum fallback safety timeout (4s)
-      setTimeout(dismiss, 4000);
-    })();
-  </script>
 </body>
 
 </html>
