@@ -97,15 +97,15 @@
       }
 
       if (document.readyState === 'complete') {
-        setTimeout(dismiss, 600);
+        setTimeout(dismiss, 1400);
       } else {
         window.addEventListener('load', function() {
-          setTimeout(dismiss, 600);
+          setTimeout(dismiss, 1400);
         });
       }
 
-      // Maximum fallback safety timeout (2.5s)
-      setTimeout(dismiss, 2500);
+      // Maximum fallback safety timeout (4s)
+      setTimeout(dismiss, 4000);
     })();
   </script>
 </body>

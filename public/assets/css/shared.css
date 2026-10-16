@@ -2500,7 +2500,7 @@ input[type="search"]:focus {
   align-items: center;
   justify-content: center;
   z-index: 999999;
-  transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.55s ease;
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.65s ease;
   pointer-events: auto;
 }
 
