@@ -67,58 +67,51 @@ class MenuSeeder extends Seeder
         Menu::create(['parent_id' => $akademisi->id, 'name' => 'Sistem Informasi', 'route_name' => 'dosen.sisteminformasi', 'order' => 5]);
         Menu::create(['parent_id' => $akademisi->id, 'name' => 'Teknik Informatika', 'route_name' => 'dosen.teknikinformatika', 'order' => 6]);
 
-        // 4. PENELITIAN
-        $penelitian = Menu::create([
-            'name' => 'PENELITIAN',
+        // 4. PENELITIAN & PKM
+        $penelitianPkm = Menu::create([
+            'name' => 'PENELITIAN & PKM',
             'route_name' => 'penelitian.pengumuman',
             'order' => 4,
         ]);
-        Menu::create(['parent_id' => $penelitian->id, 'name' => 'Pengumuman', 'route_name' => 'penelitian.pengumuman', 'order' => 1]);
-        Menu::create(['parent_id' => $penelitian->id, 'name' => 'Skema', 'route_name' => 'penelitian.skema', 'order' => 2]);
-        Menu::create(['parent_id' => $penelitian->id, 'name' => 'Data Penelitian', 'route_name' => 'penelitian.data-penelitian', 'order' => 3]);
+        Menu::create(['parent_id' => $penelitianPkm->id, 'name' => 'Pengumuman Penelitian', 'route_name' => 'penelitian.pengumuman', 'order' => 1]);
+        Menu::create(['parent_id' => $penelitianPkm->id, 'name' => 'Skema Penelitian', 'route_name' => 'penelitian.skema', 'order' => 2]);
+        Menu::create(['parent_id' => $penelitianPkm->id, 'name' => 'SELARAS', 'url' => 'https://selaraslppmkkg.info/', 'order' => 3]);
+        Menu::create(['parent_id' => $penelitianPkm->id, 'name' => 'Pengumuman PKM', 'route_name' => 'abdimas.pengumuman', 'order' => 4]);
+        Menu::create(['parent_id' => $penelitianPkm->id, 'name' => 'Skema PKM', 'route_name' => 'abdimas.skema', 'order' => 5]);
+        Menu::create(['parent_id' => $penelitianPkm->id, 'name' => 'Data PKM', 'route_name' => 'abdimas.data-abdimas', 'order' => 6]);
 
-        // 5. ABDIMAS
-        $abdimas = Menu::create([
-            'name' => 'ABDIMAS',
-            'route_name' => 'abdimas.pengumuman',
-            'order' => 5,
-        ]);
-        Menu::create(['parent_id' => $abdimas->id, 'name' => 'Pengumuman', 'route_name' => 'abdimas.pengumuman', 'order' => 1]);
-        Menu::create(['parent_id' => $abdimas->id, 'name' => 'Skema', 'route_name' => 'abdimas.skema', 'order' => 2]);
-        Menu::create(['parent_id' => $abdimas->id, 'name' => 'Data Abdimas', 'route_name' => 'abdimas.data-abdimas', 'order' => 3]);
-
-        // 6. PUBLIKASI
+        // 5. PUBLIKASI
         $publikasi = Menu::create([
             'name' => 'PUBLIKASI',
             'route_name' => 'publikasi.jurnal',
-            'order' => 6,
+            'order' => 5,
         ]);
         Menu::create(['parent_id' => $publikasi->id, 'name' => 'Jurnal', 'route_name' => 'publikasi.jurnal', 'order' => 1]);
         Menu::create(['parent_id' => $publikasi->id, 'name' => 'Prosiding', 'route_name' => 'publikasi.prosiding', 'order' => 2]);
         Menu::create(['parent_id' => $publikasi->id, 'name' => 'Artikel Ilmiah', 'route_name' => 'publikasi.artikel-ilmiah', 'order' => 3]);
 
-        // 7. SUBMIT
+        // 6. SUBMIT
         Menu::create([
             'name' => 'SUBMIT',
             'url' => 'https://linktr.ee/lppmkkg?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAb21jcARV2mBleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA81NjcwNjczNDMzNTI0MjcAAafTUkyVZTPIEdYv3YA75ggeg88EUVuc7PPWR_iW7NUnzA2H2WRV_vXbLpHn3g_aem_SeaeWPaf6-dTQwW8Hb-ZuQ',
-            'order' => 7,
+            'order' => 6,
         ]);
 
-        // 8. DOKUMEN
+        // 7. DOKUMEN
         $dokumen = Menu::create([
             'name' => 'DOKUMEN',
             'route_name' => 'dokumen.panduan',
-            'order' => 8,
+            'order' => 7,
         ]);
         Menu::create(['parent_id' => $dokumen->id, 'name' => 'Panduan', 'route_name' => 'dokumen.panduan', 'order' => 1]);
         Menu::create(['parent_id' => $dokumen->id, 'name' => 'Template', 'route_name' => 'dokumen.template', 'order' => 2]);
         Menu::create(['parent_id' => $dokumen->id, 'name' => 'Unduhan', 'route_name' => 'dokumen.unduhan', 'order' => 3]);
 
-        // 9. KONTAK
+        // 8. KONTAK
         $kontak = Menu::create([
             'name' => 'KONTAK',
             'route_name' => 'kontak.informasi-kontak',
-            'order' => 9,
+            'order' => 8,
         ]);
         Menu::create(['parent_id' => $kontak->id, 'name' => 'Informasi', 'route_name' => 'kontak.informasi-kontak', 'order' => 1]);
         Menu::create(['parent_id' => $kontak->id, 'name' => 'Jam Layanan', 'route_name' => 'kontak.jam-layanan', 'order' => 2]);

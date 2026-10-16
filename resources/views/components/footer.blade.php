@@ -57,7 +57,6 @@
         <li><a href="https://learning.kwikkiangie.ac.id" target="_blank" rel="noopener noreferrer">E-learning</a></li>
         <li><a href="https://sss.kwikkiangie.ac.id" target="_blank" rel="noopener noreferrer">Student Self Service</a></li>
         <li><a href="https://sinta.kemdiktisaintek.go.id/affiliations/departments/1113/032009" target="_blank" rel="noopener noreferrer">SINTA</a></li>
-        <li><a href="https://selaraslppmkkg.info/" target="_blank" rel="noopener noreferrer">Selaras</a></li>
       </ul>
     </div>
   </div>
