@@ -73,12 +73,9 @@ class MenuSeeder extends Seeder
             'route_name' => 'penelitian.pengumuman',
             'order' => 4,
         ]);
-        Menu::create(['parent_id' => $penelitianPkm->id, 'name' => 'Pengumuman Penelitian', 'route_name' => 'penelitian.pengumuman', 'order' => 1]);
-        Menu::create(['parent_id' => $penelitianPkm->id, 'name' => 'Skema Penelitian', 'route_name' => 'penelitian.skema', 'order' => 2]);
+        Menu::create(['parent_id' => $penelitianPkm->id, 'name' => 'Pengumuman', 'route_name' => 'penelitian.pengumuman', 'order' => 1]);
+        Menu::create(['parent_id' => $penelitianPkm->id, 'name' => 'Skema', 'route_name' => 'penelitian.skema', 'order' => 2]);
         Menu::create(['parent_id' => $penelitianPkm->id, 'name' => 'SELARAS', 'url' => 'https://selaraslppmkkg.info/', 'order' => 3]);
-        Menu::create(['parent_id' => $penelitianPkm->id, 'name' => 'Pengumuman PKM', 'route_name' => 'abdimas.pengumuman', 'order' => 4]);
-        Menu::create(['parent_id' => $penelitianPkm->id, 'name' => 'Skema PKM', 'route_name' => 'abdimas.skema', 'order' => 5]);
-        Menu::create(['parent_id' => $penelitianPkm->id, 'name' => 'Data PKM', 'route_name' => 'abdimas.data-abdimas', 'order' => 6]);
 
         // 5. PUBLIKASI
         $publikasi = Menu::create([
