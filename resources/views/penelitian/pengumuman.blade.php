@@ -63,6 +63,21 @@
         </div>
 
         <div class="content-stack">
+          <article class="card" style="border-left: 4px solid #2563eb;">
+            <div class="announcement-item">
+              <strong data-lppm-cms="pen_peng_sertijab_title">{{ \App\Models\PageContent::getValue('pen_peng_sertijab_title', 'Serah Terima Jabatan Kepala Bidang Penelitian LPPM IBI KKG') }}</strong>
+              <span class="badge" style="background: rgba(37, 99, 235, 0.1); color: #2563eb; font-weight: 600; padding: 4px 10px; border-radius: 6px;" data-lppm-cms="pen_peng_sertijab_status">{{ \App\Models\PageContent::getValue('pen_peng_sertijab_status', 'Senin, 2 November 2026') }}</span>
+            </div>
+            <p data-lppm-cms="pen_peng_sertijab_desc">
+              {{ \App\Models\PageContent::getValue('pen_peng_sertijab_desc', 'Prosesi serah terima jabatan Kepala Bidang Penelitian LPPM IBI Kwik Kian Gie dari pejabat lama Dr. Zulfikar Ikhsan Pane, S.E., Ak. kepada Dr. Ronnie Togar Mulia Sirait, S.E., M.M. dilaksanakan pada hari Senin, 2 November 2026 pukul 10.00 s.d. 11.30 WIB bertempat di Kampus IBI Kwik Kian Gie.', 'textarea') }}
+            </p>
+            <ul class="info-list">
+              <li data-lppm-cms="pen_peng_sertijab_item1">{{ \App\Models\PageContent::getValue('pen_peng_sertijab_item1', 'Pejabat Lama: Dr. Zulfikar Ikhsan Pane, S.E., Ak.') }}</li>
+              <li data-lppm-cms="pen_peng_sertijab_item2">{{ \App\Models\PageContent::getValue('pen_peng_sertijab_item2', 'Pejabat Baru: Dr. Ronnie Togar Mulia Sirait, S.E., M.M. (Kepala Bidang Penelitian)') }}</li>
+              <li data-lppm-cms="pen_peng_sertijab_item3">{{ \App\Models\PageContent::getValue('pen_peng_sertijab_item3', 'Waktu Pelaksanaan: Senin, 2 November 2026 | 10.00 - 11.30 WIB') }}</li>
+            </ul>
+          </article>
+
           <article class="card">
             <div class="announcement-item">
               <strong data-lppm-cms="pen_peng_card1_title">{{ \App\Models\PageContent::getValue('pen_peng_card1_title', 'Pembukaan Hibah Internal Penelitian 2026') }}</strong>
