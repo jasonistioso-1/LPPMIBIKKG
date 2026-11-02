@@ -91,20 +91,20 @@
               <p class="org-role" data-lppm-cms="struktur.staff.dede.role">{{ \App\Models\PageContent::getValue('struktur.staff.dede.role', 'Kesekretariatan dan Publikasi Ilmiah') }}</p>
             </article>
 
-            {{-- Zulfikar --}}
+            {{-- Kepala Bidang Penelitian: Dr. Ronnie Togar Mulia Sirait --}}
             <article class="org-card card">
-              <span class="org-number" data-lppm-cms="struktur.staff.zulfikar.label">{{ \App\Models\PageContent::getValue('struktur.staff.zulfikar.label', 'Koordinator Bidang') }}</span>
+              <span class="org-number" data-lppm-cms="struktur.staff.ronnie.label">{{ \App\Models\PageContent::getValue('struktur.staff.ronnie.label', 'Koordinator Bidang') }}</span>
               <div class="photo-rotator org-rotator">
                 <img
                   class="photo-layer is-active"
                   alt="Penelitian"
-                  src="{{ asset(\App\Models\PageContent::getValue('struktur.staff.zulfikar.photo1', 'assets/images/struktur-organisasi/pakzulfikar1.png', 'image', 'struktur', 'Foto Zulfikar: Tampilan Utama')) }}"
-                  data-alt-src="{{ asset(\App\Models\PageContent::getValue('struktur.staff.zulfikar.photo2', 'assets/images/struktur-organisasi/pakzulfikar2.png', 'image', 'struktur', 'Foto Zulfikar: Tampilan Hover/Rotasi')) }}"
-                  data-lppm-cms="struktur.staff.zulfikar.photo1"
+                  src="{{ asset(\App\Models\PageContent::getValue('struktur.staff.ronnie.photo1', 'assets/images/struktur-organisasi/pakronnie1.png', 'image', 'struktur', 'Foto Ronnie: Tampilan Utama')) }}"
+                  data-alt-src="{{ asset(\App\Models\PageContent::getValue('struktur.staff.ronnie.photo2', 'assets/images/struktur-organisasi/pakronnie2.png', 'image', 'struktur', 'Foto Ronnie: Tampilan Hover/Rotasi')) }}"
+                  data-lppm-cms="struktur.staff.ronnie.photo1"
                 />
               </div>
-              <h3 data-lppm-cms="struktur.staff.zulfikar.name">{{ \App\Models\PageContent::getValue('struktur.staff.zulfikar.name', 'Dr. Zulfikar Ikhsan Pane, S.E., Ak.') }}</h3>
-              <p class="org-role" data-lppm-cms="struktur.staff.zulfikar.role">{{ \App\Models\PageContent::getValue('struktur.staff.zulfikar.role', 'Penelitian') }}</p>
+              <h3 data-lppm-cms="struktur.staff.ronnie.name">{{ \App\Models\PageContent::getValue('struktur.staff.ronnie.name', 'Dr. Ronnie Togar Mulia Sirait, S.E., M.M.') }}</h3>
+              <p class="org-role" data-lppm-cms="struktur.staff.ronnie.role">{{ \App\Models\PageContent::getValue('struktur.staff.ronnie.role', 'Penelitian') }}</p>
             </article>
 
             {{-- Hanif --}}

@@ -158,6 +158,31 @@ class AppServiceProvider extends ServiceProvider
                         ['page' => 'home', 'label' => 'Slide 1: Url', 'value' => $url, 'type' => 'text']
                     );
                 }
+
+                // Auto-sync Kepala Bidang Penelitian: Dr. Ronnie Togar Mulia Sirait
+                \App\Models\PageContent::updateOrCreate(
+                    ['key' => 'struktur.staff.ronnie.name'],
+                    ['page' => 'struktur', 'label' => 'Foto Ronnie: Nama', 'value' => 'Dr. Ronnie Togar Mulia Sirait, S.E., M.M.', 'type' => 'text']
+                );
+                \App\Models\PageContent::updateOrCreate(
+                    ['key' => 'struktur.staff.ronnie.role'],
+                    ['page' => 'struktur', 'label' => 'Foto Ronnie: Jabatan', 'value' => 'Penelitian', 'type' => 'text']
+                );
+                \App\Models\PageContent::updateOrCreate(
+                    ['key' => 'struktur.staff.ronnie.label'],
+                    ['page' => 'struktur', 'label' => 'Foto Ronnie: Posisi', 'value' => 'Koordinator Bidang', 'type' => 'text']
+                );
+                \App\Models\PageContent::updateOrCreate(
+                    ['key' => 'struktur.staff.ronnie.photo1'],
+                    ['page' => 'struktur', 'label' => 'Foto Ronnie: Tampilan Utama', 'value' => 'assets/images/struktur-organisasi/pakronnie1.png', 'type' => 'image']
+                );
+                \App\Models\PageContent::updateOrCreate(
+                    ['key' => 'struktur.staff.ronnie.photo2'],
+                    ['page' => 'struktur', 'label' => 'Foto Ronnie: Tampilan Hover/Rotasi', 'value' => 'assets/images/struktur-organisasi/pakronnie2.png', 'type' => 'image']
+                );
+
+                // Remove old zulfikar keys if exist
+                \App\Models\PageContent::where('key', 'like', 'struktur.staff.zulfikar%')->delete();
             }
         } catch (\Throwable $e) {
             // Ignore during setup/migrations without database
